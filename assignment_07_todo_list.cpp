@@ -80,3 +80,108 @@
 #include <string>
 using namespace std;
 
+vector<string> tasks;
+
+void addTask()
+{
+    string task;
+
+    cout << "Enter task: ";
+    cin.ignore();
+    getline(cin, task);
+
+    tasks.push_back(task);
+
+    cout << "Task added." << endl;
+}
+
+
+void viewTasks()
+{
+    if (tasks.empty())
+    {
+        cout << "No tasks." << endl;
+    }
+    else
+    {
+        cout << "Your Tasks:" << endl;
+
+        for (int i = 0; i < tasks.size(); i++)
+        {
+            cout << i + 1 << ". " << tasks[i] << endl;
+        }
+    }
+}
+
+
+void deleteTask()
+{
+    if (tasks.empty())
+    {
+        cout << "No tasks to delete." << endl;
+    }
+    else
+    {
+        viewTasks();
+
+        int num;
+        cout << "Enter task number to delete: ";
+        cin >> num;
+
+        if (num >= 1 && num <= tasks.size())
+        {
+            tasks.erase(tasks.begin() + (num - 1));
+            cout << "Task deleted." << endl;
+        }
+        else
+        {
+            cout << "Invalid task number." << endl;
+        }
+    }
+}
+
+
+void menu()
+{
+    string choice = "";
+
+    while (choice != "4")
+    {
+        cout << "\nTO DO LIST MENU" << endl;
+        cout << "1. Add task" << endl;
+        cout << "2. View tasks" << endl;
+        cout << "3. Delete task" << endl;
+        cout << "4. Quit" << endl;
+
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        if (choice == "1")
+        {
+            addTask();
+        }
+        else if (choice == "2")
+        {
+            viewTasks();
+        }
+        else if (choice == "3")
+        {
+            deleteTask();
+        }
+        else if (choice == "4")
+        {
+            cout << "Goodbye!" << endl;
+        }
+        else
+        {
+            cout << "Invalid choice." << endl;
+        }
+    }
+}
+
+int main()
+{
+    menu();
+
+    return 0;
+}

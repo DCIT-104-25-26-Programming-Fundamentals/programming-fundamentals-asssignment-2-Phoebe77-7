@@ -73,3 +73,122 @@
 #include <cmath>
 using namespace std;
 
+
+void add(double a, double b)
+{
+    cout << "Result: " << a + b << endl;
+}
+
+
+void subtract(double a, double b)
+{
+    cout << "Result: " << a - b << endl;
+}
+
+
+void multiply(double a, double b)
+{
+    cout << "Result: " << a * b << endl;
+}
+
+
+void divide(double a, double b)
+{
+    if (b == 0)
+    {
+        cout << "Cannot divide by zero." << endl;
+    }
+    else
+    {
+        cout << "Result: " << fixed << setprecision(2) << a / b << endl;
+    }
+}
+
+
+void modulus(double a, double b)
+{
+    if (b == 0)
+    {
+        cout << "Cannot divide by zero." << endl;
+    }
+    else
+    {
+        cout << "Result: " << fmod(a, b) << endl;
+    }
+}
+
+
+void power(double a, double b)
+{
+    cout << "Result: " << pow(a, b) << endl;
+}
+
+int main()
+{
+    while (true)
+    {
+        cout << "============================" << endl;
+        cout << "SIMPLE CALCULATOR" << endl;
+        cout << "============================" << endl;
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Modulus" << endl;
+        cout << "6. Exponentiation" << endl;
+        cout << "7. Quit" << endl;
+
+        string choice;
+
+        cout << "Select an operation (1-7): ";
+        cin >> choice;
+
+        if (choice == "7")
+        {
+            cout << "Goodbye!" << endl;
+            break;
+        }
+
+        double a, b;
+
+        if (choice >= "1" && choice <= "6")
+        {
+            cout << "Enter first number: ";
+            cin >> a;
+
+            cout << "Enter second number: ";
+            cin >> b;
+        }
+
+        if (choice == "1")
+        {
+            add(a, b);
+        }
+        else if (choice == "2")
+        {
+            subtract(a, b);
+        }
+        else if (choice == "3")
+        {
+            multiply(a, b);
+        }
+        else if (choice == "4")
+        {
+            divide(a, b);
+        }
+        else if (choice == "5")
+        {
+            modulus(a, b);
+        }
+        else if (choice == "6")
+        {
+            power(a, b);
+        }
+        else if (choice != "7")
+        {
+            cout << "Invalid choice." << endl;
+        }
+    }
+
+    return 0;
+}
